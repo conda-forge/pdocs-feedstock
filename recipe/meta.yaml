@@ -1,6 +1,5 @@
 {% set name = "pdocs" %}
-{% set version = "1.1.1" %}
-
+{% set version = "1.2.0" %}
 
 package:
   name: {{ name|lower }}
@@ -8,7 +7,7 @@ package:
 
 source:
   url: https://pypi.io/packages/source/{{ name[0] }}/{{ name }}/pdocs-{{ version }}.tar.gz
-  sha256: f148034970220c9e05d2e04d8eb3fcec3575cf480af0966123ef9d6621b46e4f
+  sha256: 996ad4d5039b59a9a112d29abfb3995ec4ed8d8415ddce6947c3a5248adb428b
 
 build:
   number: 0
@@ -19,22 +18,21 @@ build:
 
 requirements:
   host:
+    - python >=3.7
     - pip
-    - python >=3.6,<4.0
-    - poetry
   run:
-    - dataclasses >=0.7,<0.8
-    - docstring_parser >=0.7.2,<0.8.0
-    - hug >=2.6,<3.0
-    - mako >=1.1,<2.0
-    - markdown >=3.0.0,<4.0.0
-    - python >=3.6,<4.0
+    - python >=3.7
+    - mako >1.2.2
+    - markdown >=3.0.0
+    - docstring_parser >=0.7.2
+    - hug >=2.6
 
 test:
   imports:
     - pdocs
   commands:
     - pip check
+    - pdocs --help
   requires:
     - pip
 
