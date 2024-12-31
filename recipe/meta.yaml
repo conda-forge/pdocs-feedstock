@@ -6,11 +6,11 @@ package:
   version: {{ version }}
 
 source:
-  url: https://pypi.io/packages/source/{{ name[0] }}/{{ name }}/pdocs-{{ version }}.tar.gz
+  url: https://pypi.org/packages/source/{{ name[0] }}/{{ name }}/pdocs-{{ version }}.tar.gz
   sha256: 996ad4d5039b59a9a112d29abfb3995ec4ed8d8415ddce6947c3a5248adb428b
 
 build:
-  number: 0
+  number: 1
   noarch: python
   entry_points:
     - pdocs = pdocs.cli:__hug__.cli
@@ -18,11 +18,11 @@ build:
 
 requirements:
   host:
-    - python >=3.7
+    - python {{ python_min }}
     - pip
     - poetry
   run:
-    - python >=3.7
+    - python >={{ python_min }}
     - mako >1.2.2
     - markdown >=3.0.0
     - docstring_parser >=0.7.2
@@ -38,6 +38,7 @@ test:
     # - pdocs --help
   requires:
     - pip
+    - python {{ python_min }}
 
 about:
   home: https://pypi.org/project/pdocs/
